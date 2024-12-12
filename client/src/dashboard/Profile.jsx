@@ -10,25 +10,9 @@ import axios from "axios";
 
 const Profile = () => {
   const navigate = useNavigate();
-  // const userDAta={
-  //   'id':"11",
-  //   "email":"chaubeyshubhanshu28@gmail.com",
-  //   "name":"shubhanshu Chaubey",
-  //   "number":"6387709151"
-  // }
-  // localStorage.setItem('user', JSON.parse({
-  //   "id": "11",
-  //   "email": "chaubeyshubhanshu28@gmail.com",
-  //   "name": "shubhanshu Chaubey",
-  //   "number": "6387709151"
-  // }))
+  
   const user = JSON.parse(localStorage.getItem("user"))
-  // console.log(userData)
 
-
-  // console.log("User data", userData)
-  // const user = JSON.parse(userData);
-  console.log(user)
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(user.name);
   const [number, setNumber] = useState(user.number);
@@ -52,8 +36,16 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     try {
+
+      const obj={
+        id: user.id,
+        name,
+        number, 
+        email,
+      }
+
       const response = await axios.put("http://localhost:3000/update", {
-        id: user._id,
+        id: user.id,
         name,
         number,
         email,

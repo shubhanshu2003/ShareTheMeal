@@ -1,8 +1,8 @@
-import User from '../models/user.js';
+
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import db from '../config/mongo.js'
+import db from '../config/pg.js'
 dotenv.config();
 
 

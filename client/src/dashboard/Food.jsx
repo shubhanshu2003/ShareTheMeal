@@ -14,6 +14,7 @@ const Food = () => {
   const fetchFoodItems = async () => {
     try {
       const response = await axios.get("http://localhost:3000/allfoods");
+      console.log(response.data)
       setFood(response.data);
     } catch (error) {
       console.log(error);
@@ -27,7 +28,7 @@ const Food = () => {
   const filteredFood =
     selectedTag === "all"
       ? food
-      : food.filter((item) => item.foodTag === selectedTag);
+      : food.filter((item) => item.foodtag === selectedTag);
 
   return (
     <div className="food">
@@ -80,11 +81,11 @@ const Food = () => {
         {filteredFood.map((item) => (
           <FoodCard
             key={item._id}
-            name={item.foodName}
+            name={item.foodname}
             quantity={item.quantity}
-            date={item.expiryDate}
+            date={item.expirydate}
             address={item.address}
-            tag={item.foodTag}
+            tag={item.foodtag}
           />
         ))}
       </div>

@@ -27,9 +27,9 @@ const Login = () => {
       console.log(res);
       const Token = res.data.Token;
       const userData=res.data.user;
-      localStorage.setItem("user", res.data.user);
+      // localStorage.setItem("user", res.data.user);
       localStorage.setItem('user', JSON.stringify({ 
-        id: 11, 
+        id: userData.id, 
         email: userData.email, 
         name: userData.name, 
         number:userData.number 
@@ -63,7 +63,7 @@ const Login = () => {
           />
           <input
             name="password"
-            type="password"
+            type="text"
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter password"

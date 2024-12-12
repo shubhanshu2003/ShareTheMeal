@@ -105,7 +105,7 @@ const Sidebar = ({ user, isSiderOpen, setIsSiderOpen }) => {
             </div>
           </div>
         ))}
-        {email === "abhyuday7176@gmail.com" && (
+        {email === "chaubeyshubhanshu30@gmail.com" && (
           <div
             className="sidebar__body__item"
             style={{
