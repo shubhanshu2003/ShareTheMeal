@@ -6,6 +6,12 @@ import bodyParser from 'body-parser';
 import connectDB from './config/pg.js'
 import cors from 'cors';
 import dotenv from 'dotenv'
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 dotenv.config()
 
 import express from 'express';
@@ -17,11 +23,17 @@ app.use(cors());
 // app.get('/', (req, res) => {
 //     res.send('Hello World!');
 // });
+app.use(express.static(path.join(__dirname, "public","dist"))); 
+
 
 app.use('/', authRoutes);
 app.use('/', foodDonationRoutes);
 app.use('/', allFoodRoutes);
 app.use('/', userRoutes);
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname, "public","dist"))
+
+})
 // app.use('/api/v1', userRoutes);
 
 
